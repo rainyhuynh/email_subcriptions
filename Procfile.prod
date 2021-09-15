@@ -1,0 +1,4 @@
+web: rails server
+worker: redis-server
+worker: bundle exec sidekiq
+webpack: bin/webpack-dev-server

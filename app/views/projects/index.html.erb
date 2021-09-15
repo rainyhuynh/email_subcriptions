@@ -1,0 +1,16 @@
+<h1 class="text-3xl font-bold">Projects</h1>
+
+<div class="grid grid-cols-12 gap-6 mb-10">
+<% @projects.each do |project| %>
+  <div class="col-span-12 p-6 border rounded shadow lg:col-span-3">
+    <%= link_to project, class: "block" do %>
+      <h3 class="mb-4 text-lg font-bold"><%= project.title %></h3>
+      <p class="leading-snug text-gray-600"><%= truncate(project.description, length: 200) %></p>
+    <% end %>
+  </div>
+<% end %>
+</div>
+
+<div class="my-4">
+  <%= link_to 'New Project', new_project_path, class: "btn btn-default" %>
+</div>

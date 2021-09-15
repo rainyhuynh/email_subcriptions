@@ -1,0 +1,31 @@
+<div class="max-w-4xl px-10 pt-10 pb-24 mx-auto mt-10 bg-white border rounded shadow-lg">
+  <div class="flex flex-wrap items-center justify-between">
+    <h1 class="mb-4 text-4xl font-bold"><%= @project.title %></h1>
+    <% if @project.author(current_user) %>
+      <%= link_to 'Edit project', edit_project_path(@project), class: "underline" %>
+    <% end %>
+  </div>
+
+  <div class="text-lg font-light leading-relaxed text-gray-600">
+    <p class="font-bold text-gray-900">Description:</p>
+    <%= @project.description %>
+  </div>
+
+  <% if @project.users.any? %>
+    <h3 class="pb-3 my-6 text-2xl font-bold border-b">Collaborators</h3>
+
+    <ul class="pl-4 list-disc">
+      <% @project.users.each do |user| %>
+        <li><%= user.first_name %></li>
+      <% end %>
+    </ul>
+  <% end %>
+
+  <h3 class="pb-3 my-6 text-2xl font-bold border-b">Tasks</h3>
+
+  <ul id="<%= dom_id(@project) %>_tasks" class="mb-6 leading-relaxed" data-controller="tasks">
+    <%= render @project.tasks %>
+  </ul>
+
+  <%= render "tasks/form", task: @task %>
+</div>

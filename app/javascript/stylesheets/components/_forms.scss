@@ -154,3 +154,7 @@
     }
   }
 }
+
+.completed {
+  @apply line-through italic opacity-50;
+}
