@@ -2,6 +2,7 @@ class EmailsController < ApplicationController
     def unsubscribe
         user = User.find_by_unsubscribe_hash(params[:unsubscribe_hash])
 
+        #send email
         case params[:subscription]
         when "added_to_project"
           @reason = "being added to projects"
